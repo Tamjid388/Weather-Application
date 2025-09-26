@@ -30,7 +30,7 @@ export const forecast = async ({ city, unit }: { city: string; unit: "metric" | 
   const res = await axiosInstance.get<Tforecast>("/forecast", {
     params: {
       q: city,
-      appid: process.env.NEXT_PUBLIC_WEATHER_API_KEY,
+      appid: process.env.NEXT_PUBLIC_API_KEY,
       units: unit,
     },
   });

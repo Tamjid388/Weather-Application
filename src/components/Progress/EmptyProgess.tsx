@@ -12,7 +12,7 @@ export default function EmptyProgess() {
                 height={96}
                 className='object-cover'
                 />
-                  <h1 className='font-normal text-white text-lg'>
+                  <h1 className='font-normal text-white text-lg text-center'>
                 Search for a city to see weather information</h1>
         
         </div>

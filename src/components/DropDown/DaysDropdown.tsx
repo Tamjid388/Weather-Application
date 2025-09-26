@@ -1,46 +1,39 @@
-"use client"
-import React, { useState } from 'react'
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
-import { Button } from "@/components/ui/button"
+"use client";
+import React from "react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuCheckboxItem,
   DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { ChevronDown, Settings } from 'lucide-react'
+  DropdownMenuCheckboxItem,
+} from "@/components/ui/dropdown-menu";
 
-export default function DaysDropdown() {
-     const [day, setDay] = useState<string>("metric");
+const weekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+interface DaysDropdownProps {
+  selectedDay: number;
+  setSelectedDay: (day: number) => void;
+}
+
+export default function DaysDropdown({ selectedDay, setSelectedDay }: DaysDropdownProps) {
+  
+  
   return (
- <div className=''>
-        <DropdownMenu  >
+    <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className='bg-neutral-800 text-white border-none' variant="outline">
-            
-            Saturday
-        
-            </Button>
+        <Button variant="toggle">{weekDays[selectedDay]}</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-
-        <DropdownMenuCheckboxItem
-        checked={day === "metric"}
-            onCheckedChange={() => setDay("metric")}
-        >
-          Matrics
-        </DropdownMenuCheckboxItem>
-    
-        <DropdownMenuCheckboxItem
-         checked={day === "imperial"}
-            onCheckedChange={() => setDay("imperial")}
-        >
-          Imperial
-        </DropdownMenuCheckboxItem>
+        {weekDays.map((day, index) => (
+          <DropdownMenuCheckboxItem
+            key={day}
+            checked={selectedDay === index}
+            onCheckedChange={() => setSelectedDay(index)}
+          >
+            {day}
+          </DropdownMenuCheckboxItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
-    </div>
-  )
+  );
 }

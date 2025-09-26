@@ -11,11 +11,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { ChevronDown, Settings } from 'lucide-react'
+import { useWeatherContext } from '@/providers/WeatherContextProvider'
 
 type Checked = DropdownMenuCheckboxItemProps["checked"]
 export default function Dropdown() {
-    const [unit, setUnit] = useState<"metric" | "imperial">("metric");
-   
+    // const [unit, setUnit] = useState<"metric" | "imperial">("metric");
+      const { city, setCurrentCity, unit,setSelectedUnit} = useWeatherContext();
   return (
     <div>
         <DropdownMenu>
@@ -31,7 +32,7 @@ export default function Dropdown() {
         <DropdownMenuSeparator /> */}
         <DropdownMenuCheckboxItem
         checked={unit === "metric"}
-            onCheckedChange={() => setUnit("metric")}
+            onCheckedChange={() => setSelectedUnit("metric")}
         >
           Matrics
         </DropdownMenuCheckboxItem>
@@ -44,7 +45,7 @@ export default function Dropdown() {
         </DropdownMenuCheckboxItem> */}
         <DropdownMenuCheckboxItem
          checked={unit === "imperial"}
-            onCheckedChange={() => setUnit("imperial")}
+            onCheckedChange={() => setSelectedUnit("imperial")}
         >
           Imperial
         </DropdownMenuCheckboxItem>

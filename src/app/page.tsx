@@ -4,8 +4,8 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="
-   bg-[#02012c] h-[100vh]
-    ">
+   bg-[#02012c] 
+    min-h-screen">
 <MainContainer/>
 
 

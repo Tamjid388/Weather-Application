@@ -7,23 +7,28 @@ import { useCurrentWeather } from "@/hooks/useCurrentWeather";
 import axios from "axios";
 import DisplayWeatherData from "../displayWeatherData/DisplayWeatherData";
 import Image from "next/image";
+import { useWeatherContext } from "@/providers/WeatherContextProvider";
+import Notfound from "../NotFound/Notfound";
+import Skillton from "../Skiltons/Skillton";
 
 
 
 export default function MainContainer() {
-  const [city, setCurrentCity] = useState<string | null>(null);
-  const [unit, setSelectedUnit] = useState<"metric" | "imperial">("metric");
+ 
+   const { city, setCurrentCity, unit} 
+   = useWeatherContext();
   
-  const { data:weatherdata, isLoading, isError,error } = useCurrentWeather(city, unit);
-  console.log("current weather data",weatherdata);
-  console.log(city);
+  
+  const { data:weatherdata, isPending, isError,error } = useCurrentWeather(city, unit);
+ 
+ console.log(weatherdata);
 
    if (isError && axios.isAxiosError(error)) {
-  console.log(error.response?.data.message); // "city not found"
+  console.log(error.response?.data.message); 
+  console.log(error.message);
+  
 }
-if(isLoading){
-    return <h1 className="text-5xl text-white">Loading</h1>
-}
+
   
   return (
     <div className="container mx-auto">
@@ -40,7 +45,8 @@ if(isLoading){
        {
         city &&   <DisplayWeatherData weatherdata={weatherdata}/>
        }
-    
+
+
     
       </div>
     </div>
