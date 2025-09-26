@@ -12,39 +12,30 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { ChevronDown, Settings } from 'lucide-react'
 
-type Checked = DropdownMenuCheckboxItemProps["checked"]
-export default function Dropdown() {
-    const [unit, setUnit] = useState<"metric" | "imperial">("metric");
-   
+export default function DaysDropdown() {
+     const [day, setDay] = useState<string>("metric");
   return (
-    <div>
-        <DropdownMenu>
+ <div className=''>
+        <DropdownMenu  >
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">
-            <Settings />
-            Units
-            <ChevronDown />
+        <Button className='bg-neutral-800 text-white border-none' variant="outline">
+            
+            Saturday
+        
             </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        {/* <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-        <DropdownMenuSeparator /> */}
+
         <DropdownMenuCheckboxItem
-        checked={unit === "metric"}
-            onCheckedChange={() => setUnit("metric")}
+        checked={day === "metric"}
+            onCheckedChange={() => setDay("metric")}
         >
           Matrics
         </DropdownMenuCheckboxItem>
-        {/* <DropdownMenuCheckboxItem
-          checked={showActivityBar}
-          onCheckedChange={setShowActivityBar}
-          disabled
-        >
-          Activity Bar
-        </DropdownMenuCheckboxItem> */}
+    
         <DropdownMenuCheckboxItem
-         checked={unit === "imperial"}
-            onCheckedChange={() => setUnit("imperial")}
+         checked={day === "imperial"}
+            onCheckedChange={() => setDay("imperial")}
         >
           Imperial
         </DropdownMenuCheckboxItem>

@@ -52,4 +52,6 @@ export interface WeatherResponse {
   id: number;
   name: string;
   cod: number;
+ rain?: { "1h"?: number; "3h"?: number };
+
 }

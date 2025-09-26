@@ -8,7 +8,7 @@ export const getCurrentWeather=async({city,unit}:
 const response=await axiosInstance.get('/weather',{
     params:{
     q:city,
-    appid:process.env.API_KEY,
+    appid:process.env.NEXT_PUBLIC_API_KEY,
     units:unit
     }
 });
